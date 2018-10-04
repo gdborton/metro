@@ -23,103 +23,15 @@
 
 const babel = require('babel-core');
 const chalk = require('chalk');
-const fs = require('fs');
-const getPackages = require('./_getPackages');
-const glob = require('glob');
-const micromatch = require('micromatch');
-const mkdirp = require('mkdirp');
-const path = require('path');
-
-const SRC_DIR = 'src';
-const BUILD_DIR = 'build';
-const JS_FILES_PATTERN = '**/*.js';
-const IGNORE_PATTERN = '**/__tests__/**';
-const PACKAGES_DIR = path.resolve(__dirname, '../packages');
-
-const fixedWidth = function(str/*: string*/) {
-  const WIDTH = 80;
-  const strs = str.match(new RegExp(`(.{1,${WIDTH}})`, 'g')) || [str];
-  let lastString = strs[strs.length - 1];
-  if (lastString.length < WIDTH) {
-    lastString += Array(WIDTH - lastString.length).join(chalk.dim('.'));
-  }
-  return strs
-    .slice(0, -1)
-    .concat(lastString)
-    .join('\n');
-};
-
-function getPackageName(file) {
-  return path.relative(PACKAGES_DIR, file).split(path.sep)[0];
-}
-
-function getBuildPath(file, buildFolder) {
-  const pkgName = getPackageName(file);
-  const pkgSrcPath = path.resolve(PACKAGES_DIR, pkgName, SRC_DIR);
-  const pkgBuildPath = path.resolve(PACKAGES_DIR, pkgName, buildFolder);
-  const relativeToSrcPath = path.relative(pkgSrcPath, file);
-  return path.resolve(pkgBuildPath, relativeToSrcPath);
-}
-
-function buildPackage(p) {
-  const srcDir = path.resolve(p, SRC_DIR);
-  const pattern = path.resolve(srcDir, '**/*');
-  const files = glob.sync(pattern, {nodir: true});
-
-  process.stdout.write(fixedWidth(`${path.basename(p)}\n`));
-
-  files.forEach(file => buildFile(file, true));
-  process.stdout.write(`[  ${chalk.green('OK')}  ]\n`);
-}
-
-function buildFile(file, silent) {
-  const destPath = getBuildPath(file, BUILD_DIR);
-
-  mkdirp.sync(path.dirname(destPath));
-  if (micromatch.isMatch(file, IGNORE_PATTERN)) {
-    silent ||
-      process.stdout.write(
-        chalk.dim('  \u2022 ') +
-          path.relative(PACKAGES_DIR, file) +
-          ' (ignore)\n'
-      );
-  } else if (!micromatch.isMatch(file, JS_FILES_PATTERN)) {
-    fs.createReadStream(file).pipe(fs.createWriteStream(destPath));
-    silent ||
-      process.stdout.write(
-        chalk.red('  \u2022 ') +
-          path.relative(PACKAGES_DIR, file) +
-          chalk.red(' \u21D2 ') +
-          path.relative(PACKAGES_DIR, destPath) +
-          ' (copy)' +
-          '\n'
-      );
-  } else {
-    // $FlowFixMe TODO t25179342 need to update flow-types for babel-core
-    const transformed = babel.transformFileSync(file, {}).code;
-    fs.writeFileSync(destPath, transformed);
-    const source = fs.readFileSync(file).toString('utf-8');
-    if (/\@flow/.test(source)) {
-      fs.createReadStream(file).pipe(fs.createWriteStream(destPath + '.flow'));
-    }
-    silent ||
-      process.stdout.write(
-        chalk.green('  \u2022 ') +
-          path.relative(PACKAGES_DIR, file) +
-          chalk.green(' \u21D2 ') +
-          path.relative(PACKAGES_DIR, destPath) +
-          '\n'
-      );
-  }
-}
+const buildUtils = require('./build-utils');
 
 const files = process.argv.slice(2);
 
 if (files.length) {
-  files.forEach(buildFile);
+  files.forEach(buildUtils.buildFile);
 } else {
   // $FlowFixMe TODO t25179342 Add version to the flow types for this module
   process.stdout.write(chalk.bold.inverse('Building packages') + ' (using Babel v' + babel.version + ')\n');
-  getPackages().forEach(buildPackage);
+  buildUtils.getPackages().forEach(buildUtils.buildPackage);
   process.stdout.write('\n');
 }

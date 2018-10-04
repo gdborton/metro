@@ -3,7 +3,7 @@
   "version": "0.47.0",
   "description": "Implementation of the Buck worker protocol for Node.js.",
   "license": "MIT",
-  "main": "src/worker-tool.js",
+  "main": "build/worker-tool.js",
   "dependencies": {
     "JSONStream": "^1.3.1",
     "async": "^2.4.0",
