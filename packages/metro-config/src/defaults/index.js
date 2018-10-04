@@ -79,6 +79,7 @@ const getDefaultValues = (projectRoot: ?string): ConfigT => ({
     postMinifyProcess: x => x,
     transformVariants: {default: {}},
     workerPath: 'metro/build/DeltaBundler/Worker',
+    publicPath: '/assets',
   },
   cacheStores: [
     new FileStore({
