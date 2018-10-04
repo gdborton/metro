@@ -20,6 +20,7 @@ const ResolutionRequest = require('./DependencyGraph/ResolutionRequest');
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const {ModuleResolver} = require('./DependencyGraph/ModuleResolution');
 const {EventEmitter} = require('events');
@@ -185,6 +186,11 @@ class DependencyGraph extends EventEmitter {
     const sha1 = this._hasteFS.getSha1(resolvedPath);
 
     if (!sha1) {
+      const content = fs.readFileSync(resolvedPath, 'utf8');
+      const otherSha1 = crypto.createHash('sha1')
+        .update(content)
+        .digest('hex');
+      return otherSha1;
       throw new ReferenceError(`SHA-1 for file ${filename} is not computed`);
     }
 
