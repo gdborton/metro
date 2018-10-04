@@ -19,7 +19,7 @@ const {
   getGraphFromModuleToModule,
 } = require('./functions');
 
-import type {Graph} from 'metro/src/DeltaBundler';
+import type {Graph} from 'metro/build/DeltaBundler';
 
 const router = Router();
 let metroGraph: Graph<>;

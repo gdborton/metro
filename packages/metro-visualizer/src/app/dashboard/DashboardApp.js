@@ -26,7 +26,7 @@ import type {
   BuildDetails,
 } from '../../middleware/metroHistory.js';
 import {message, Row, Col, Card, Tag, Icon} from 'antd';
-import type {BundleOptions} from 'metro/src/shared/types.flow.js';
+import type {BundleOptions} from 'metro/build/shared/types.flow.js';
 
 type State = {
   metroHistory: MetroHistory,

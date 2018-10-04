@@ -10,10 +10,10 @@
 
 'use strict';
 
-const TerminalReporter = require('metro/src/lib/TerminalReporter');
+const TerminalReporter = require('metro/build/lib/TerminalReporter');
 
 const getDefaultConfig = require('../defaults');
-const getMaxWorkers = require('metro/src/lib/getMaxWorkers');
+const getMaxWorkers = require('metro/build/lib/getMaxWorkers');
 const path = require('path');
 const prettyFormat = require('pretty-format');
 

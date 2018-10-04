@@ -10,7 +10,7 @@
 
 'use strict';
 
-const defaults = require('metro-config/src/defaults/defaults');
+const defaults = require('metro-config/build/defaults/defaults');
 const getPreludeCode = require('./getPreludeCode');
 const transformHelpers = require('./transformHelpers');
 

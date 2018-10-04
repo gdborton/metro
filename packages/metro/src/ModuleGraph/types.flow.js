@@ -12,7 +12,7 @@
 import type {Ast} from '@babel/core';
 import type {BabelSourceMap} from '@babel/core';
 import type {FBSourceMap, MetroSourceMap} from 'metro-source-map';
-import type {TransformResultDependency} from 'metro/src/DeltaBundler';
+import type {TransformResultDependency} from 'metro/build/DeltaBundler';
 
 export type BuildResult = GraphResult;
 

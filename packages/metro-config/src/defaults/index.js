@@ -10,10 +10,10 @@
 
 'use strict';
 
-const TerminalReporter = require('metro/src/lib/TerminalReporter');
+const TerminalReporter = require('metro/build/lib/TerminalReporter');
 
 const blacklist = require('./blacklist');
-const getMaxWorkers = require('metro/src/lib/getMaxWorkers');
+const getMaxWorkers = require('metro/build/lib/getMaxWorkers');
 const os = require('os');
 const path = require('path');
 
@@ -64,9 +64,9 @@ const getDefaultValues = (projectRoot: ?string): ConfigT => ({
   },
   transformer: {
     assetPlugins: [],
-    asyncRequireModulePath: 'metro/src/lib/bundle-modules/asyncRequire',
+    asyncRequireModulePath: 'metro/build/lib/bundle-modules/asyncRequire',
     assetRegistryPath: 'missing-asset-registry-path',
-    babelTransformerPath: 'metro/src/defaultTransformer',
+    babelTransformerPath: 'metro/build/defaultTransformer',
     dynamicDepsInPackages: 'throwAtRuntime',
     enableBabelRCLookup: true,
     getTransformOptions: async () => ({
@@ -78,7 +78,7 @@ const getDefaultValues = (projectRoot: ?string): ConfigT => ({
     optimizationSizeLimit: 150 * 1024, // 150 KiB.
     postMinifyProcess: x => x,
     transformVariants: {default: {}},
-    workerPath: 'metro/src/DeltaBundler/Worker',
+    workerPath: 'metro/build/DeltaBundler/Worker',
   },
   cacheStores: [
     new FileStore({
@@ -90,7 +90,7 @@ const getDefaultValues = (projectRoot: ?string): ConfigT => ({
   // node_modules/metro/
   projectRoot: projectRoot || path.resolve(__dirname, '../../..'),
   watchFolders: [],
-  transformerPath: require.resolve('metro/src/JSTransformer/worker.js'),
+  transformerPath: require.resolve('metro/build/JSTransformer/worker.js'),
   maxWorkers: getMaxWorkers(),
   resetCache: false,
   reporter: new TerminalReporter(new Terminal(process.stdout)),

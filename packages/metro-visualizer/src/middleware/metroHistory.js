@@ -12,7 +12,7 @@
 
 const {Logger} = require('metro-core');
 
-import type {BundleOptions} from 'metro/src/shared/types.flow';
+import type {BundleOptions} from 'metro/build/shared/types.flow';
 
 export type BuildDetails = {
   status: 'started' | 'done' | 'failed',

@@ -10,15 +10,15 @@
 
 'use strict';
 
-const TerminalReporter = require('metro/src/lib/TerminalReporter');
+const TerminalReporter = require('metro/build/lib/TerminalReporter');
 
 const getDefaultConfig = require('./defaults');
-const getMaxWorkers = require('metro/src/lib/getMaxWorkers');
+const getMaxWorkers = require('metro/build/lib/getMaxWorkers');
 
 const {Terminal} = require('metro-core');
 
 import type {ConfigT, OldConfigT} from './configTypes.flow';
-import type {Reporter} from 'metro/src/lib/reporting';
+import type {Reporter} from 'metro/build/lib/reporting';
 
 type DeprecatedMetroOptions = {|
   resetCache?: boolean,

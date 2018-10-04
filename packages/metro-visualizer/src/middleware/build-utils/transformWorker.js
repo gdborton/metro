@@ -19,4 +19,4 @@ const rootPath = path.resolve(
 );
 babelRegister(babelRegister.buildRegExps(rootPath, ['metro/packages/']));
 
-module.exports = require('metro/src/DeltaBundler/Worker');
+module.exports = require('metro/build/DeltaBundler/Worker');

@@ -19,12 +19,12 @@ import type {
   DeltaResult,
   Graph,
   Module,
-} from 'metro/src/DeltaBundler/types.flow.js';
-import type {TransformResult} from 'metro/src/DeltaBundler';
-import type {TransformVariants} from 'metro/src/ModuleGraph/types.flow.js';
-import type {DynamicRequiresBehavior} from 'metro/src/ModuleGraph/worker/collectDependencies';
-import type Server from 'metro/src/Server';
-import type {Reporter} from 'metro/src/lib/reporting';
+} from 'metro/build/DeltaBundler/types.flow.js';
+import type {TransformResult} from 'metro/build/DeltaBundler';
+import type {TransformVariants} from 'metro/build/ModuleGraph/types.flow.js';
+import type {DynamicRequiresBehavior} from 'metro/build/ModuleGraph/worker/collectDependencies';
+import type Server from 'metro/build/Server';
+import type {Reporter} from 'metro/build/lib/reporting';
 
 export type PostMinifyProcess = ({
   code: string,

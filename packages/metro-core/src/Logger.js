@@ -16,7 +16,7 @@ const process = require('process');
 
 const {EventEmitter} = require('events');
 
-import type {BundleOptions} from 'metro/src/shared/types.flow';
+import type {BundleOptions} from 'metro/build/shared/types.flow';
 
 const VERSION = require('../package.json').version;
 

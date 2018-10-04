@@ -8,8 +8,7 @@
  * @format
  */
 'use strict';
-
-const defaultCreateModuleIdFactory = require('metro/src/lib/createModuleIdFactory');
+const defaultCreateModuleIdFactory = require('metro/build/lib/createModuleIdFactory');
 
 exports.assetExts = [
   // Image formats
@@ -45,7 +44,7 @@ exports.assetExts = [
 
 exports.sourceExts = ['js', 'json', 'ts', 'tsx'];
 
-exports.moduleSystem = require.resolve('metro/src/lib/polyfills/require.js');
+exports.moduleSystem = require.resolve('metro/build/lib/polyfills/require.js');
 
 exports.platforms = ['ios', 'android', 'windows', 'web'];
 

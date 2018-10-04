@@ -11,7 +11,7 @@
 
 'use strict';
 
-import type {Graph} from 'metro/src/DeltaBundler';
+import type {Graph} from 'metro/build/DeltaBundler';
 
 const dummyModule = {
   dependencies: new Map(),

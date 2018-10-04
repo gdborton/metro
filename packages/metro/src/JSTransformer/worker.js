@@ -34,7 +34,7 @@ const {
   toSegmentTuple,
 } = require('metro-source-map');
 
-import type {TransformResultDependency} from 'metro/src/DeltaBundler';
+import type {TransformResultDependency} from 'metro/build/DeltaBundler';
 import type {DynamicRequiresBehavior} from '../ModuleGraph/worker/collectDependencies';
 import type {Ast} from '@babel/core';
 import type {Plugins as BabelPlugins} from 'babel-core';

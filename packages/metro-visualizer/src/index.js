@@ -16,7 +16,7 @@ const {
 } = require('./middleware/metroHistory');
 const {initializeMiddlewareRoutes} = require('./middleware/routes');
 
-import type Server from 'metro/src/Server';
+import type Server from 'metro/build/Server';
 
 function initializeVisualizerMiddleware(metroServer: Server) {
   startRecordingHistory(metroServer._logger);

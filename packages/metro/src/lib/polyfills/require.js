@@ -354,8 +354,8 @@ function loadModuleImplementation(moduleId, module) {
     }
 
     // keep args in sync with with defineModuleCode in
-    // metro/src/Resolver/index.js
-    // and metro/src/ModuleGraph/worker.js
+    // metro/build/Resolver/index.js
+    // and metro/build/ModuleGraph/worker.js
     factory(
       global,
       metroRequire,

@@ -10,7 +10,7 @@
 
 'use strict';
 
-import type Server from 'metro/src/Server';
+import type Server from 'metro/build/Server';
 
 function initializeVisualizerMiddleware(metroServer: Server) {
   throw new Error('Unimplemented server');

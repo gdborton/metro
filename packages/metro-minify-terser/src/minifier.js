@@ -17,7 +17,7 @@ import type {
   MetroMinifier,
   MetroMinifierResult,
   MinifyOptions,
-} from 'metro/src/shared/types.flow.js';
+} from 'metro/build/shared/types.flow.js';
 
 function minifier(
   code: string,

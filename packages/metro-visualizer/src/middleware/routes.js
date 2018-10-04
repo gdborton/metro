@@ -20,8 +20,8 @@ const {Terminal} = require('metro-core');
 const {parse} = require('url');
 
 import type {MetroHistory} from './metroHistory.js';
-import type {Graph} from 'metro/src/DeltaBundler';
-import type Server from 'metro/src/Server';
+import type {Graph} from 'metro/build/DeltaBundler';
+import type Server from 'metro/build/Server';
 
 const router = Router();
 const terminal = new Terminal(process.stdout);

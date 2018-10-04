@@ -19,8 +19,8 @@ import type {
   ModuleList,
   GraphInfo,
 } from 'metro-visualizer/src/types.flow';
-import type {Module} from 'metro/src/DeltaBundler/types.flow';
-import type {Graph} from 'metro/src/DeltaBundler';
+import type {Module} from 'metro/build/DeltaBundler/types.flow';
+import type {Graph} from 'metro/build/DeltaBundler';
 
 class PathSearchError extends Error {}
 
